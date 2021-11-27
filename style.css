@@ -7,7 +7,7 @@ body {
 }
 
 .dataRow input:valid {
-    border-color: blue;
+    border-color: green;
 }
 
 .dataRow input {
