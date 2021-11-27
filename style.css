@@ -1,3 +1,15 @@
 body {
     background-color: aqua;
 }
+
+.dataRow input:invalid {
+    border-color: red;
+}
+
+.dataRow input:valid {
+    border-color: blue;
+}
+
+.dataRow input {
+    border-width: 3px;
+}
