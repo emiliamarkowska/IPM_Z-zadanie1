@@ -2,14 +2,13 @@
 
 <head>
     <link rel="stylesheet" href="style.css">
-    <src source="validations.js" type="text/javascript"></src>
     <title>244028 - IPM</title>
 </head>
 <body>
-    <form action="">
+    <form class="dataForm" onsubmit="return validateEmail()">
         <div>
             <label>Adres email</label>
-            <input type="text" id="email" name="adres email" placeholder="example@gmail.com" onblur="validateEmail">
+            <input type="email" id="email" name="adres email" placeholder="example@gmail.com" required>
         </div>
         <div>
             <label>Kod pocztowy </label>
@@ -51,6 +50,7 @@
             <label>Numer Telefon </label>
             <input type="text" name="telefon" placeholder="999999999">
         </div>
+        <input type="submit" value="Submit">
     </form>
 </body>
 
