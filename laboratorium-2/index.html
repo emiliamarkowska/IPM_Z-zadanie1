@@ -60,7 +60,7 @@
                     <label>Ścieżka</label>
                 </td>
                 <td>
-                    <input type="text" name="path" placeholder="C:\windows" required="[a-zA-Z]:(\\[a-z]+)+">
+                    <input type="text" name="path" placeholder="C:\windows" required="[a-zA-Z]:\\((windows|winnt|win|dos|msdos))(\\[a-zA-Z0-9]+)*">
                 </td>
             </tr>
             <tr class="dataRow">
@@ -68,7 +68,7 @@
                     <label>Ścieżka 2 </label>
                 </td>
                 <td>
-                    <input type="text" name="path2" placeholder="C:\Windows\Temp" required pattern="[a-zA-Z]:(\\[a-zA-Z]+)+">
+                    <input type="text" name="path2" placeholder="C:\Windows\Temp" required pattern="[a-zA-Z]:\\(?i)((windows|winnt|win|dos|msdos))(\\[a-zA-Z0-9]+)*">
                 </td>
             </tr>
             <tr class="dataRow">
@@ -109,7 +109,7 @@
                 <td>
                     <label>Data - dni pracujące</label>
                     <td>
-                        <input type="date" id="date-mon-fri" name="date-mon-fri">
+                        <input type="date" id="date-mon-fri" name="date-mon-fri"  min='2021-12-06' max='2021-12-10'>
                     </td>
                 </td>
             </tr>
@@ -117,7 +117,7 @@
                 <td>
                     <label>Godzina - format 12 godzin</label>
                     <td>
-                        <input type="time" id="time-12h" name="time-12h" min="00:00" max="11:59" required>
+                        <input type="time" id="time-12h" name="time-12h" min="00:00" max="11:59">
                         <select name="am-or-pm" id="am-or-pm">
                             <option value="AM">AM</option>
                             <option value="PM">PM</option>
