@@ -1,0 +1,11 @@
+.dataRow input:invalid {
+    border-color: red;
+}
+
+.dataRow input:valid {
+    border-color: green;
+}
+
+.dataRow input {
+    border-width: 3px;
+}
