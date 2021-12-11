@@ -52,7 +52,7 @@
                     <label>Strona WWW</label>
                 </td>
                 <td>
-                    <input type="text" name="www" placeholder="www.strona.pl" required pattern="(www\.)?([a-zA-Z0-9]+\.)+([a-zA-Z0-9]+)">
+                    <input type="text" name="www" placeholder="www.strona.pl" required pattern="(www\.)*([a-zA-Z0-9]+\.)+([a-zA-Z0-9]+)">
                 </td>
             </tr>
             <tr class="dataRow">
@@ -73,10 +73,10 @@
             </tr>
             <tr class="dataRow">
                 <td>
-                    <label>Ścieżka do pliku w katalogu</label>
+                    <label>Ścieżka linuksowa</label>
                 </td>
                 <td>
-                    <input type="text" name="katalog" placeholder="\katalog\plik" required pattern="[a-zA-Z0-0]*(\\[a-zA-Z0-0]*)*">
+                    <input type="text" name="katalog" placeholder="/etc/passwd" required pattern="\/etc\/([a-zA-Z0-9]+)">
                 </td>
             </tr>
             <tr class="dataRow">
