@@ -6,13 +6,12 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <div class="platform">
-
+    <div id="platform" class="platform" ondrop="handleDrop(event)" ondragover="handleDragOver(event)">
     </div>
     <div class="buttonSpace">
         <button class="generateButton" onclick="setBlockColor()">Generuj klocek</button>
         <div class="blockSpace">
-            <div id="block" class="block"></div>
+            <div id="block" class="block" draggable="true" ondragstart="onDragStart(event)"></div>
         </div>
     </div>
 </body>
