@@ -1,9 +1,22 @@
 .platform {
-    background-color: red;
+    background-color: pink;
     height: 80%;
 }
 
 .buttonSpace {
-    background-color: blue;
     height: 20%;
+}
+
+.generateButton {
+    height: 100%;
+    width: 80%;
+    background-color: grey;
+    float: left;
+}
+
+.block {
+    width: 20%;
+    height: 100%;
+    background-color: black;
+    float: left;
 }
