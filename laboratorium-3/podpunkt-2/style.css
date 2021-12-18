@@ -14,9 +14,19 @@
     float: left;
 }
 
-.block {
+.blockSpace {
     width: 20%;
     height: 100%;
-    background-color: black;
+    background-color: white;
     float: left;
+    position: relative;
+}
+
+.block {
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+    background-color: black;
+    position: absolute;
 }
