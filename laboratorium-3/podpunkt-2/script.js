@@ -22,10 +22,9 @@ function handleDrop(ev) {
     newBlock.style.position = "absolute";
     newBlock.style.bottom = 0;
     newBlock.style.left = ev.offsetX;
-    console.log(newBlock.style.left);
 
     if(platform.children.length > 0) {
-        isSomethingBelowTheBlock(newBlock, platform.children, ev)
+        putBlock(newBlock, platform.children, ev)
     }
 
 
@@ -39,25 +38,28 @@ function setNewBlockInitialStyle(newBlock) {
     newBlock.style.width = squareSize;
 }
 
-function isSomethingBelowTheBlock(newBlock, allBlocks, event) {
+function putBlock(newBlock, allBlocks, event) {
     xCoordinate = newBlock.offsetLeft;
-
+    console.log(allBlocks)
     for(let i = 0; i < allBlocks.length; i++) {
         currentlyCheckedBlock = allBlocks[i];
         currentBoxLeftOffset = currentlyCheckedBlock.offsetLeft;
 
-        console.log(currentBoxLeftOffset);
-        console.log(newBlock.style.left);
+        let potentialHeightToBeSet = 0;
 
-        if(event.offsetX + squareSize > currentBoxLeftOffset) {
-            console.log("something is below me")
+        if(isSomethingBelowTheBlock(currentBoxLeftOffset, event.offsetX, squareSize)) {
             newBlock.style.left = event.offsetX;
-            console.log("height: ")
-            console.log(currentlyCheckedBlock.id * squareSize);
-            newBlock.style.bottom = currentlyCheckedBlock.id + squareSize;
+            potentialHeightToBeSet = parseInt(currentlyCheckedBlock.style.bottom) + squareSize;
         }
+
+        newBlock.style.bottom = potentialHeightToBeSet;
     }
 }
+
+function isSomethingBelowTheBlock(currentBoxLeftOffset, eventOffset, squareSize) {
+    return currentBoxLeftOffset < eventOffset + squareSize && currentBoxLeftOffset + squareSize > eventOffset
+}
+
 
   
 function handleDragOver(ev) {
