@@ -60,7 +60,6 @@ function isSomethingBelowTheBlock(currentBoxLeftOffset, eventOffset, squareSize)
     return currentBoxLeftOffset < eventOffset + squareSize && currentBoxLeftOffset + squareSize > eventOffset
 }
 
-
   
 function handleDragOver(ev) {
     ev.preventDefault();
