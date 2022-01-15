@@ -1,6 +1,7 @@
 var randomColor;
 var currentId = 0;
 var squareSize = 50;
+var previousBlockColor;
 
 function setBlockColor() {
     randomColor = Math.floor(Math.random()*16777215).toString(16);
@@ -16,14 +17,11 @@ function onDragStart(ev) {
   }
   
   function onDragEnd(ev) {
-      console.log(ev)
-      console.log("drag end")
-        document.getElementById(ev.srcElement.id).remove();
+    document.getElementById(ev.srcElement.id).remove();
   }
 
   function dragElementStarted(ev) {
-      console.log(ev);
-      console.log("drag started");
+      previousBlockColor = ev.srcElement.style.backgroundColor;
   }
 
 function handleDrop(ev) {
@@ -33,7 +31,6 @@ function handleDrop(ev) {
     newBlock.setAttribute("draggable", true);
     newBlock.setAttribute("ondragend", "onDragEnd(event)");
     newBlock.setAttribute("ondragstart", "dragElementStarted(event)");
-    // newBlock.setAttribute("ondragstart", "onDragStart(event)");
 
     setNewBlockInitialStyle(newBlock);
     currentId = currentId + 1;
@@ -52,14 +49,19 @@ function handleDrop(ev) {
 
 function setNewBlockInitialStyle(newBlock) {
     newBlock.id = currentId;
-    newBlock.style.backgroundColor = randomColor;
+    if(previousBlockColor) {
+        newBlock.style.backgroundColor = previousBlockColor;
+        previousBlockColor = undefined;
+    }
+    else {
+        newBlock.style.backgroundColor = randomColor;
+    }
     newBlock.style.height = squareSize;
     newBlock.style.width = squareSize;
 }
 
 function putBlock(newBlock, allBlocks, event) {
     xCoordinate = newBlock.offsetLeft;
-    console.log(allBlocks)
     for(let i = 0; i < allBlocks.length; i++) {
         currentlyCheckedBlock = allBlocks[i];
         currentBoxLeftOffset = currentlyCheckedBlock.offsetLeft;
