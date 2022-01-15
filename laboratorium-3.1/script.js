@@ -10,22 +10,25 @@ function setBlockColor() {
 }
 
 function onDragStart(ev) {
+    ev.dataTransfer.setData("text", ev.offsetX)
 }
   
-  function allowDrop(event) {
+function allowDrop(event) {
     event.preventDefault();
-  }
+}
   
-  function onDragEnd(ev) {
+function onDragEnd(ev) {
     document.getElementById(ev.srcElement.id).remove();
-  }
+}
 
-  function dragElementStarted(ev) {
-      previousBlockColor = ev.srcElement.style.backgroundColor;
-  }
+function dragElementStarted(ev) {
+    previousBlockColor = ev.srcElement.style.backgroundColor;
+    ev.dataTransfer.setData("text", ev.offsetX)
+}
 
 function handleDrop(ev) {
     ev.preventDefault();
+    let initialOffset = ev.dataTransfer.getData("text");
     currentBlock = document.getElementById("block")
     newBlock = document.createElement("div");
     newBlock.setAttribute("draggable", true);
@@ -40,11 +43,12 @@ function handleDrop(ev) {
     newBlock.style.left = ev.offsetX;
 
     if(platform.children.length > 0) {
-        putBlock(newBlock, platform.children, ev)
+        putBlock(newBlock, platform.children, ev, initialOffset)
     }
 
 
     platform.appendChild(newBlock);
+    console.log(platform)
 }
 
 function setNewBlockInitialStyle(newBlock) {
@@ -60,8 +64,8 @@ function setNewBlockInitialStyle(newBlock) {
     newBlock.style.width = squareSize;
 }
 
-function putBlock(newBlock, allBlocks, event) {
-    xCoordinate = newBlock.offsetLeft;
+function putBlock(newBlock, allBlocks, event, initialOffset) {
+    xCoordinate = event.offsetX - initialOffset;
     for(let i = 0; i < allBlocks.length; i++) {
         currentlyCheckedBlock = allBlocks[i];
         currentBoxLeftOffset = currentlyCheckedBlock.offsetLeft;
@@ -69,7 +73,7 @@ function putBlock(newBlock, allBlocks, event) {
         let potentialHeightToBeSet = 0;
 
         if(isSomethingBelowTheBlock(currentBoxLeftOffset, event.offsetX, squareSize)) {
-            newBlock.style.left = event.offsetX;
+            newBlock.style.left = xCoordinate;
             potentialHeightToBeSet = parseInt(currentlyCheckedBlock.style.bottom) + squareSize;
         }
 
