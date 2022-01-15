@@ -1,0 +1,18 @@
+<html>
+
+<head>
+    <title>244028 - IPM</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="platform" class="platform" ondrop="handleDrop(event)" ondragover="handleDragOver(event)">
+    </div>
+    <div class="buttonSpace">
+        <button class="generateButton" onclick="setBlockColor()">Generuj klocek</button>
+        <div class="blockSpace">
+            <div id="block" class="block" draggable="true" ondragstart="onDragStart(event)"></div>
+        </div>
+    </div>
+</body>
+</html>
